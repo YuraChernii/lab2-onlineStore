@@ -1,0 +1,9 @@
+﻿@model Shoes
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="col-lg-4">
+    <img class="img-thumbnail" src="@Model.image" alt="@Model.name" />
+    <h2>@Model.name</h2>
+    <p>@Model.shortDescription</p>
+    <p>Price: @Model.price.ToString("c")</p>
+    <p><a class="bth btn-warning" asp-controller="ShopCart" asp-action="addToCart" asp-route-id="@Model.id">Add to basket</a></p>
+</div>

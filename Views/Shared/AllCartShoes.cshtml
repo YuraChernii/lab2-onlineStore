@@ -1,0 +1,9 @@
+﻿@model ShopCartItem
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+    
+    <div class="alert alert-warning mt-3">
+        <b>Shoes:</b> @Model.shoes.name<br />
+        <b>Price:</b> @Model.shoes.price.ToString("c")
+
+        <p><a class="bth btn-warning" asp-controller="ShopCart" asp-action="DeleteToCart" asp-route-id="@Model.id">Delete</a></p>
+    </div>

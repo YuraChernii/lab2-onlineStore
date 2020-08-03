@@ -1,0 +1,43 @@
+﻿@model Order
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <h3>Place an order</h3>
+    <form asp-action="CheckOut" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="name"></label>
+            <div class="col-md-5">
+                <input asp-for="name" class="text-danger" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="surname"></label>
+            <div class="col-md-5">
+                <input asp-for="surname" class="text-danger" />
+                <span asp-validation-for="surname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="adress"></label>
+            <div class="col-md-5">
+                <input asp-for="adress" class="text-danger" />
+                <span asp-validation-for="adress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="phone"></label>
+            <div class="col-md-5">
+                <input asp-for="phone" class="text-danger" />
+                <span asp-validation-for="phone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="email"></label>
+            <div class="col-md-5">
+                <input asp-for="email" class="text-danger" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Complete the order" />
+    </form>
+</div>

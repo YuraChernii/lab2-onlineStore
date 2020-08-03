@@ -1,0 +1,13 @@
+﻿@model HomeViewModel
+@using Tymchak_shop.Data.Models
+<h1>The best shoes.</h1>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (Shoes shoes in Model.favouriteShoes)
+        {
+            @Html.Partial("AllShoes", shoes)
+        }
+
+    }
+
+</div>

@@ -1,0 +1,14 @@
+﻿
+@using Tymchak_shop.Data.Models
+<h1>All shoes.</h1>
+<h3>@Model.currCategory</h3>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (Shoes shoes in Model.allShoes)
+        {
+            @Html.Partial("AllShoes", shoes)
+        }
+
+    }
+
+</div>
