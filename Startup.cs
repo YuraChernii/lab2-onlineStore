@@ -60,6 +60,7 @@ namespace Tymchak_shop
                 config.LoginPath = "/Home/Login";
             });
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddTransient<IAllShoes, ShoesRepository>();
             services.AddTransient<IShoesCategory, CategoryRepository>();
             services.AddTransient<IAllOrders, OrdersRepository>();

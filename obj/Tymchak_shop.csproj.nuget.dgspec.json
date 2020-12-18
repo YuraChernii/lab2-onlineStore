@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\мої предмети\\ооп\\Tymchak_shop\\Tymchak_shop\\Tymchak_shop.csproj": {}
+    "D:\\repo\\.NetCore\\TraineeProj\\lab2-onlineStore\\Tymchak_shop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\мої предмети\\ооп\\Tymchak_shop\\Tymchak_shop\\Tymchak_shop.csproj": {
+    "D:\\repo\\.NetCore\\TraineeProj\\lab2-onlineStore\\Tymchak_shop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\мої предмети\\ооп\\Tymchak_shop\\Tymchak_shop\\Tymchak_shop.csproj",
+        "projectUniqueName": "D:\\repo\\.NetCore\\TraineeProj\\lab2-onlineStore\\Tymchak_shop.csproj",
         "projectName": "Tymchak_shop",
-        "projectPath": "C:\\Users\\HP\\Desktop\\мої предмети\\ооп\\Tymchak_shop\\Tymchak_shop\\Tymchak_shop.csproj",
+        "projectPath": "D:\\repo\\.NetCore\\TraineeProj\\lab2-onlineStore\\Tymchak_shop.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\мої предмети\\ооп\\Tymchak_shop\\Tymchak_shop\\obj\\",
+        "outputPath": "D:\\repo\\.NetCore\\TraineeProj\\lab2-onlineStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "JSON": {
               "target": "Package",
@@ -96,6 +98,10 @@
               "target": "Package",
               "version": "[2.0.2, )"
             },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "System.Security.Claims": {
               "target": "Package",
               "version": "[4.3.0, )"
@@ -111,6 +117,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.10, 3.1.10]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -119,7 +135,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+//using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using NETCore.MailKit.Core;
 using Tymchak_shop.Data;
 using Tymchak_shop.Data.Interfaces;
@@ -22,7 +30,8 @@ namespace Tymchak_shop.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailService _emailService;
         private AppDBContent appDBContent;
-        
+        private static Mutex mutex = new Mutex();
+
         public HomeController(AppDBContent appDBContent1, IAllShoes shoesRepository, UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager, IEmailService emailService)
         {
@@ -49,12 +58,8 @@ namespace Tymchak_shop.Controllers
         }
         [Authorize]
         public IActionResult Secret()
-        {
-            var obj = new HomeViewModel
-            {
-                favouriteShoes = _shoesRepository.getFavShoes
-            };
-            return View(obj);
+        {           
+            return View();
         }
         public IActionResult Login()
         {
@@ -64,8 +69,73 @@ namespace Tymchak_shop.Controllers
         {
             return View();
         }
-        
         [HttpPost]
+        public async Task<IActionResult> EditDB(string query)
+        {
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                try
+                {
+                    var table = new StringBuilder();
+
+                    using (var con = new SqlConnection(appDBContent.Database.GetDbConnection().ConnectionString))
+                    {
+                        mutex.WaitOne();
+                        con.Open();
+                        var cmd = con.CreateCommand();
+
+                        cmd.CommandText = query;
+
+                        var reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            table.AppendLine("<table class=\"table table-bordered\">");
+                            table.AppendLine("<thead><tr>");
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                table.AppendLine("<th>");
+                                table.AppendLine(reader.GetName(i));
+                                table.AppendLine("</th>");
+                            }
+                            table.AppendLine("</tr></thead>");
+                            table.AppendLine("<tbody>");
+                            while (reader.Read())
+                            {
+                                table.AppendLine("<tr>");
+
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    table.AppendLine("<td>");
+                                    table.AppendLine(reader[i].ToString());
+                                    table.AppendLine("</td>");
+                                }
+                                table.AppendLine("</tr>");
+                            }
+                            table.AppendLine("</tbody>");
+                            table.AppendLine("</table>");
+                            TempData["Result"] = table.ToString();
+                        }
+                        else
+                        {
+                            TempData["Result"] = string.Format("{0} records affected", reader.RecordsAffected);
+                        }
+
+                        reader.Close();
+                        mutex.ReleaseMutex();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["Result"] = ex.Message;
+                    mutex.ReleaseMutex();
+                }
+            }
+            //return View();
+            return RedirectToAction("Secret");
+        }
+
+            [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
             var user = await _userManager.FindByNameAsync(username);

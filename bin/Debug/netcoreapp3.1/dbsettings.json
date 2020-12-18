@@ -1,5 +1,5 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Tymchak_shop;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Tymchakshop;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }
