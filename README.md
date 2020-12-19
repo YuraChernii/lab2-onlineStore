@@ -1,6 +1,6 @@
 Hi)) This is an online store that provides easy access to the database. The administrator can receive, edit, add and delete data after authorization. And all this he performs on raw sql queries. In the event of an error, the system responds with a fairly clear explanation of the error.
 
-Let's try to run it:
+##Let's try to run it:
 
 1)git clone or download zip
 2)Double click on Tymchak_shop.csproj file
