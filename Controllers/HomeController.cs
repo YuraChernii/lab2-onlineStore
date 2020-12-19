@@ -83,11 +83,8 @@ namespace Tymchak_shop.Controllers
                         mutex.WaitOne();
                         con.Open();
                         var cmd = con.CreateCommand();
-
                         cmd.CommandText = query;
-
                         var reader = cmd.ExecuteReader();
-
                         if (reader.HasRows)
                         {
                             table.AppendLine("<table class=\"table table-bordered\">");
@@ -103,7 +100,6 @@ namespace Tymchak_shop.Controllers
                             while (reader.Read())
                             {
                                 table.AppendLine("<tr>");
-
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
                                     table.AppendLine("<td>");
@@ -120,7 +116,6 @@ namespace Tymchak_shop.Controllers
                         {
                             TempData["Result"] = string.Format("{0} records affected", reader.RecordsAffected);
                         }
-
                         reader.Close();
                         mutex.ReleaseMutex();
                     }
@@ -131,11 +126,10 @@ namespace Tymchak_shop.Controllers
                     mutex.ReleaseMutex();
                 }
             }
-            //return View();
             return RedirectToAction("Secret");
         }
 
-            [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
             var user = await _userManager.FindByNameAsync(username);
