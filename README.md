@@ -2,7 +2,7 @@ Hi)) This is an online store that provides easy access to the database. The admi
 
 ## Let's try to run it:
 
-# 1)git clone or download zip
+### 1)git clone or download zip
 2)Double click on Tymchak_shop.csproj file
 3)Open dbsettings.json and change ConnectionStrings:DefaultConnection
 4)Open Package Manager Console:
