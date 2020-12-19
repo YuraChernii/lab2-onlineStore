@@ -6,8 +6,10 @@ Hi)) This is an online store that provides easy access to the database. The admi
 #### 2)Double click on Tymchak_shop.csproj file
 #### 3)Open dbsettings.json and change ConnectionStrings:DefaultConnection
 #### 4)Open Package Manager Console:
+```
   $ Add-Migration MyMigration -Context AppDBContent
   $ Update-DataBase
+```
 #### The program generates data automatically
 #### 5)Now you can run. Started!!Huuh))
 #### 6)You can see the "For administration" tab. Click on it
