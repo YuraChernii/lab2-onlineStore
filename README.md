@@ -16,5 +16,7 @@ Hi)) This is an online store that provides easy access to the database. The admi
 #### 6)You can see the "For administration" tab. Click on it
 #### 7)Then you have to log in. Two fields have a password: 1234ddfSD
 #### 8)Finally you can enter sql query
+##### Implementation of "SQLEditor" you can see in HomeController->SQLEditor
+##### Tests in 
 
   
